@@ -1,4 +1,3 @@
-import csv
 from collector import Artifact, Cypher, Oddity, collect
 
 raw_artifacts = "./RAW_ITEMS_ARTIFACTS.csv"
@@ -9,6 +8,7 @@ ARTIFACTS = collect(raw_artifacts, Artifact)
 CYPHERS = collect(raw_cyphers, Cypher)
 ODDITIES = collect(raw_oddities, Oddity)
 
-print(len(ARTIFACTS))
-print(len(CYPHERS))
-print(len(ODDITIES))
+if __name__ == "__main__":
+    assert len(ARTIFACTS) == 300, "Artifact collection failed"
+    assert len(CYPHERS) == 500, "Cypher collection failed"
+    assert len(ODDITIES) == 400, "Oddity collection failed"
