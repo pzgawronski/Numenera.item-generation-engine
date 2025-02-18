@@ -1,2 +1,0 @@
-TODO: init function for Cypher class
-TODO: init function for Oddity class
