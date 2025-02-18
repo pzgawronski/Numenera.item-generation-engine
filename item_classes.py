@@ -21,16 +21,26 @@ class Numenera:
     @staticmethod
     def _get_level(csv_level: str):
 
+        """
+        :param csv_level: str
+        level cell from the csv file; can contain
+            - an integer (1-10)
+            - a dice roll indication (1d6)
+            - a modified roll indication (1d6+2)
+        :return: level_sum: int
+        """
+
         level_list = csv_level.split(sep="+")
 
         if "d" in level_list[0]:
             dice_split = level_list[0].split("d")
             die_roll = int(dice_split[1])
-            level_list[0] = r.randint(1, die_roll)
-
-        level_list_int = [int(level) for level in level_list]
-
-        return sum(level_list_int)
+            roll_result = r.randint(1, die_roll)
+            return roll_result
+        else:
+            level_list_int = [int(level) for level in level_list]
+            level_sum = sum(level_list_int)
+            return level_sum
 
     @staticmethod
     def _text_wrapper(text):
